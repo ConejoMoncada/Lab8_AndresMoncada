@@ -52,11 +52,11 @@ public class Principal extends javax.swing.JFrame {
         jDialog1.getContentPane().setLayout(jDialog1Layout);
         jDialog1Layout.setHorizontalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 469, Short.MAX_VALUE)
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 395, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -201,23 +201,16 @@ public class Principal extends javax.swing.JFrame {
             tm.reload();
         }//no hay gerente general
         else if(tree_add.getSelectionCount() > 0){
-            String puesto_jefe =((Empleado)((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).getUserObject()).getPuesto();
-            String puesto = "";
-            if(puesto_jefe.equals("Gerente general"))
-                puesto = "Gerente de area";
-            if(puesto_jefe.equals("Gerente de area"))
-                puesto = "Empleado de primera linea";
             Empleado e = new Empleado(add_nombre.getText(),Integer.parseInt(add_id.getText()),add_pass.getText(),
-                    (Empleado)((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).getUserObject(),Integer.parseInt(add_sal.getText()),puesto);
+                    (Empleado)((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).getUserObject(),Integer.parseInt(add_sal.getText()),"Empleado de primera linea");
             DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(e);
-            if(((Empleado)((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).getUserObject()).addEmpleados(e)){
-                ((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).add(nodo);
-                add_nombre.setText("");
-                add_id.setText("");
-                add_sal.setText("");
-                add_pass.setText("");
-                tm.reload();
-            }
+            ((Empleado)((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).getUserObject()).addEmpleados(e);
+            ((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).add(nodo);
+            add_nombre.setText("");
+            add_id.setText("");
+            add_sal.setText("");
+            add_pass.setText("");
+            tm.reload();
         }//se selecciono en el arbol
         else{
             JOptionPane.showMessageDialog(this, "Seleccione a un gerente primero");

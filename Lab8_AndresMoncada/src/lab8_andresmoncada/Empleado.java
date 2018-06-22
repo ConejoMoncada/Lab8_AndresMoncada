@@ -90,13 +90,10 @@ public class Empleado {
         this.empleados = empleados;
     }
 
-    public boolean addEmpleados(Empleado e){
-        if(!puesto.equals("Empleado de primera linea")){
+    public void addEmpleados(Empleado e){
+        if(!puesto.equals("Gerente general")){
             empleados.add(e);
-            return true;
-        }else{
-            JOptionPane.showMessageDialog(null, "No se le pueden asignar empleados a este empleado");
-            return false;
+            puesto = "Gerente de area";
         }
     }
     @Override
