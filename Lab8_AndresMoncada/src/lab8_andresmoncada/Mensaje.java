@@ -14,17 +14,22 @@ import java.util.ArrayList;
 public class Mensaje {
     private String destino;
     private String fuente;
-    private boolean cirfrado;
+    private boolean cifrado;
     private ArrayList<Character> chars = new ArrayList();
     private ArrayList<Integer> frec = new ArrayList();
     private String msg;
     private String[][] tabla;
+    private ArrayList<Character> cord = new ArrayList();
+    private ArrayList<Integer> ford = new ArrayList();
 
-    public Mensaje(String destino, String fuente, boolean cirfrado,String msg) {
+    public Mensaje(String destino, String fuente, boolean cifrado,String msg) {
         this.destino = destino;
         this.fuente = fuente;
-        this.cirfrado = cirfrado;
+        this.cifrado = cifrado;
         this.msg = msg;
+        if(cifrado){
+            cod();
+        }
     }
 
     public String getDestino() {
@@ -43,12 +48,12 @@ public class Mensaje {
         this.fuente = fuente;
     }
 
-    public boolean isCirfrado() {
-        return cirfrado;
+    public boolean isCifrado() {
+        return cifrado;
     }
 
-    public void setCirfrado(boolean cirfrado) {
-        this.cirfrado = cirfrado;
+    public void setCifrado(boolean cirfrado) {
+        this.cifrado = cirfrado;
     }
 
     public ArrayList<Character> getChars() {
@@ -106,6 +111,14 @@ public class Mensaje {
         return msg;
     }
     public void cod(){
+        for (int i = 0; i < msg.length(); i++) {
+            for (int j = 0; j < frec.size(); j++) {
+                if(frec.get(j) == i+1){
+                    ford.set(j, frec.get(j));
+                    cord.set(j, chars.get(j));
+                }
+            }
+        }
         
     }
 }

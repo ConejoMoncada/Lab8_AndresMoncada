@@ -37,7 +37,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        prom = new javax.swing.JMenuItem();
         asc = new javax.swing.JMenuItem();
         camb = new javax.swing.JMenuItem();
         desp = new javax.swing.JMenuItem();
@@ -45,6 +44,18 @@ public class Principal extends javax.swing.JFrame {
         msg = new javax.swing.JMenuItem();
         mcst = new javax.swing.JMenuItem();
         jProgressBar1 = new javax.swing.JProgressBar();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jDialog2 = new javax.swing.JDialog();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton5 = new javax.swing.JButton();
+        jDialog3 = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tree_add = new javax.swing.JTree();
         jButton1 = new javax.swing.JButton();
@@ -114,30 +125,139 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        prom.setText("Promover Empleado");
-        prom.setToolTipText("");
-        prom.addActionListener(new java.awt.event.ActionListener() {
+        asc.setText("Ascender Empleado");
+        asc.setToolTipText("");
+        asc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                promActionPerformed(evt);
+                ascActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(prom);
-
-        asc.setText("Ascender Empleado");
         jPopupMenu1.add(asc);
 
         camb.setText("Cambiar puesto");
+        camb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(camb);
 
         desp.setText("Despedir");
+        desp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                despActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(desp);
         jPopupMenu1.add(jSeparator1);
 
-        msg.setText("Enviar Mensaje");
+        msg.setText("Enviar mensaje a este empleado");
+        msg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                msgActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(msg);
 
         mcst.setText("Enviar multicast");
+        mcst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mcstActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(mcst);
+
+        jMenuItem1.setText("Seleccionar receptor");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu2.add(jMenuItem1);
+
+        jLabel6.setText("Mensaje");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jButton5.setText("Enviar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addGroup(jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel6))
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialog2Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jButton5)))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jLabel7.setText("Mensaje");
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane4.setViewportView(jTextArea2);
+
+        jButton6.setText("Enviar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog3Layout = new javax.swing.GroupLayout(jDialog3.getContentPane());
+        jDialog3.getContentPane().setLayout(jDialog3Layout);
+        jDialog3Layout.setHorizontalGroup(
+            jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog3Layout.createSequentialGroup()
+                .addGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog3Layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel7))
+                    .addGroup(jDialog3Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialog3Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jButton6)))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jDialog3Layout.setVerticalGroup(
+            jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -283,6 +403,9 @@ public class Principal extends javax.swing.JFrame {
         else if(tree_add.getSelectionCount() > 0){
             Empleado e = new Empleado(add_nombre.getText(),Integer.parseInt(add_id.getText()),add_pass.getText(),
                     (Empleado)((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).getUserObject(),Integer.parseInt(add_sal.getText()),"Empleado de primera linea");
+            if (e.getJefe().equals((Empleado)((DefaultMutableTreeNode)tm.getRoot()).getUserObject())){
+                e.setPuesto("Gerente de area");
+            }
             DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(e);
             ((Empleado)((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).getUserObject()).addEmpleados(e);
             ((DefaultMutableTreeNode)tree_add.getSelectionPath().getLastPathComponent()).add(nodo);
@@ -313,10 +436,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tree2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tree2MouseClicked
-        if(evt.isMetaDown()){
+        if(evt.isMetaDown() && !s){
             int row = tree2.getClosestRowForLocation(evt.getX(), evt.getY());
             tree2.setSelectionRow(row);
             jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+        }else if(evt.isMetaDown() && s){
+            int row = tree2.getClosestRowForLocation(evt.getX(), evt.getY());
+            tree2.setSelectionRow(row);
+            s = false;
+            jPopupMenu2.show(evt.getComponent(), evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_tree2MouseClicked
 
@@ -325,7 +453,7 @@ public class Principal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void promActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_promActionPerformed
+    private void ascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ascActionPerformed
         DefaultTreeModel tm = (DefaultTreeModel) tree2.getModel();
         DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) tree2.getSelectionPath().getLastPathComponent();
         if(!nodo.equals((DefaultMutableTreeNode)tm.getRoot())){
@@ -339,13 +467,80 @@ public class Principal extends javax.swing.JFrame {
             }
         }else
             JOptionPane.showMessageDialog(tree2, "No se puede promover");
-    }//GEN-LAST:event_promActionPerformed
+    }//GEN-LAST:event_ascActionPerformed
 
     private void jDialog1WindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jDialog1WindowClosed
         jDialog1.dispose();
         dispose();
     }//GEN-LAST:event_jDialog1WindowClosed
 
+    private void msgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_msgActionPerformed
+        DefaultTreeModel tm = (DefaultTreeModel) tree2.getModel();
+        rec = (DefaultMutableTreeNode) tree2.getSelectionPath().getLastPathComponent();
+        JOptionPane.showMessageDialog(jDialog1, "Seleccione el emisor del mensaje con clic derecho");
+        s =true;
+    }//GEN-LAST:event_msgActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        em = (DefaultMutableTreeNode) tree2.getSelectionPath().getLastPathComponent();
+        jDialog2.setModal(true);
+        jDialog2.setLocationRelativeTo(jDialog1);
+        jDialog2.pack();
+        jDialog2.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Mensaje m = new Mensaje(rec.toString(), em.toString(), true, jTextArea1.getText());
+        pa.cargarArchivo();
+        pa.addM(m);
+        pa.escribirArchivo();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void mcstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mcstActionPerformed
+        em = (DefaultMutableTreeNode) tree2.getSelectionPath().getLastPathComponent();
+        jDialog3.setModal(true);
+        jDialog3.setLocationRelativeTo(jDialog1);
+        jDialog3.pack();
+        jDialog3.setVisible(true);
+    }//GEN-LAST:event_mcstActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        pa.cargarArchivo();
+        crearMensajes(em);
+        pa.escribirArchivo();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void despActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despActionPerformed
+        DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) tree2.getSelectionPath().getLastPathComponent();
+        DefaultTreeModel tm = (DefaultTreeModel) tree2.getModel();
+        DefaultMutableTreeNode hijo;
+        if(!nodo.equals((DefaultMutableTreeNode)tm.getRoot())){
+            for (int i = 0; i < nodo.getChildCount(); i++) {
+                hijo = (DefaultMutableTreeNode) nodo.getChildAt(i);
+                ((DefaultMutableTreeNode)nodo.getParent()).add(hijo);
+            }
+            tm.removeNodeFromParent(nodo);
+        }else
+            JOptionPane.showMessageDialog(jDialog1, "No");
+        tm.reload();
+    }//GEN-LAST:event_despActionPerformed
+
+    private void cambActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambActionPerformed
+        
+    }//GEN-LAST:event_cambActionPerformed
+
+    public void crearMensajes(DefaultMutableTreeNode n){
+        for (int i = 0; i < n.getChildCount(); i++) {
+            if(n.getChildAt(i).getChildCount() == 0){
+                pa.addM(new Mensaje(n.getChildAt(i).toString(),em.toString(),false,jTextArea2.getText()));
+            }else{
+                crearMensajes((DefaultMutableTreeNode)n.getChildAt(i));
+            }
+        }
+        if(!n.equals(em)){
+            pa.addM(new Mensaje(n.toString(),em.toString(),false,jTextArea2.getText()));
+        }//para no agregar el emisor
+    }
     /**
      * @param args the command line arguments
      */
@@ -394,24 +589,38 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
+    private javax.swing.JDialog jDialog3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel label_add;
     private javax.swing.JMenuItem mcst;
     private javax.swing.JMenuItem msg;
-    private javax.swing.JMenuItem prom;
     private javax.swing.JTree tree2;
     private javax.swing.JTree tree_add;
     // End of variables declaration//GEN-END:variables
     private boolean g = false;
     Para_el_archivo pa = new Para_el_archivo("./Mensajes.lab");
+    DefaultMutableTreeNode rec;
+    DefaultMutableTreeNode em;
+    boolean s = false;
 }
