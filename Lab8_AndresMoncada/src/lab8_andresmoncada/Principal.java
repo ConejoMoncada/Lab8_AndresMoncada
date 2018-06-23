@@ -43,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         msg = new javax.swing.JMenuItem();
         mcst = new javax.swing.JMenuItem();
+        disp = new javax.swing.JMenuItem();
         jProgressBar1 = new javax.swing.JProgressBar();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -56,6 +57,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jButton6 = new javax.swing.JButton();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jDialog4 = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         tree_add = new javax.swing.JTree();
         jButton1 = new javax.swing.JButton();
@@ -167,6 +173,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jPopupMenu1.add(mcst);
 
+        disp.setText("Mostrar mensajes");
+        disp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dispActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(disp);
+
         jMenuItem1.setText("Seleccionar receptor");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +271,35 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
                 .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jMenuItem2.setText("Seleccionar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu3.add(jMenuItem2);
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane5.setViewportView(jTextArea3);
+
+        javax.swing.GroupLayout jDialog4Layout = new javax.swing.GroupLayout(jDialog4.getContentPane());
+        jDialog4.getContentPane().setLayout(jDialog4Layout);
+        jDialog4Layout.setHorizontalGroup(
+            jDialog4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDialog4Layout.setVerticalGroup(
+            jDialog4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -436,7 +479,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tree2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tree2MouseClicked
-        if(evt.isMetaDown() && !s){
+        if(evt.isMetaDown() && !s && !cng){
             int row = tree2.getClosestRowForLocation(evt.getX(), evt.getY());
             tree2.setSelectionRow(row);
             jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
@@ -445,6 +488,11 @@ public class Principal extends javax.swing.JFrame {
             tree2.setSelectionRow(row);
             s = false;
             jPopupMenu2.show(evt.getComponent(), evt.getX(), evt.getY());
+        }else if(evt.isMetaDown() && cng){
+            int row = tree2.getClosestRowForLocation(evt.getX(), evt.getY());
+            tree2.setSelectionRow(row);
+            cng = false;
+            jPopupMenu3.show(evt.getComponent(), evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_tree2MouseClicked
 
@@ -526,8 +574,35 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_despActionPerformed
 
     private void cambActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambActionPerformed
-        
+        rec = (DefaultMutableTreeNode) tree2.getSelectionPath().getLastPathComponent();
+        JOptionPane.showMessageDialog(jDialog1, "Seleccione con quien quiere cambiar con clic derecho");
+        cng = true;
     }//GEN-LAST:event_cambActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        em = (DefaultMutableTreeNode) tree2.getSelectionPath().getLastPathComponent();
+        c1 = (Empleado)rec.getUserObject();
+        c2 = (Empleado)em.getUserObject();
+        if(c1.getPuesto().equals(c2.getPuesto())){
+            Empleado c3 = c2;
+            c2 = c1;
+            c1 = c3;
+            rec.setUserObject(c1);
+            em.setUserObject(c2);
+            ((DefaultTreeModel)tree2.getModel()).reload();
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void dispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispActionPerformed
+        pa.cargarArchivo();
+        for (Mensaje m : pa.getMensajes()) {
+            jTextArea3.append(m.toString());
+        }
+        jDialog3.setModal(true);
+        jDialog3.setLocationRelativeTo(jDialog1);
+        jDialog3.pack();
+        jDialog3.setVisible(true);
+    }//GEN-LAST:event_dispActionPerformed
 
     public void crearMensajes(DefaultMutableTreeNode n){
         for (int i = 0; i < n.getChildCount(); i++) {
@@ -585,6 +660,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem asc;
     private javax.swing.JMenuItem camb;
     private javax.swing.JMenuItem desp;
+    private javax.swing.JMenuItem disp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -594,6 +670,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JDialog jDialog3;
+    private javax.swing.JDialog jDialog4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -602,16 +679,20 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel label_add;
     private javax.swing.JMenuItem mcst;
     private javax.swing.JMenuItem msg;
@@ -622,5 +703,8 @@ public class Principal extends javax.swing.JFrame {
     Para_el_archivo pa = new Para_el_archivo("./Mensajes.lab");
     DefaultMutableTreeNode rec;
     DefaultMutableTreeNode em;
+    Empleado c1;
+    Empleado c2;
     boolean s = false;
+    private boolean cng = false;
 }

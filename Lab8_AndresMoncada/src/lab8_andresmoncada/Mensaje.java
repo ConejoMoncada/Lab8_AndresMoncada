@@ -5,13 +5,15 @@
  */
 package lab8_andresmoncada;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Dell
  */
-public class Mensaje {
+public class Mensaje implements Serializable{
+    private static final long SerialVersionUID = 123L;
     private String destino;
     private String fuente;
     private boolean cifrado;
@@ -108,7 +110,7 @@ public class Mensaje {
 
     @Override
     public String toString() {
-        return msg;
+        return "De: " + fuente + "A: " +destino+ "----->"+msg;
     }
     public void cod(){
         for (int i = 0; i < msg.length(); i++) {
